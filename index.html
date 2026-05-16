@@ -1,0 +1,62 @@
+<!-- public/index.html - Customer Frontend Homepage -->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Niva Jewels - Exquisite Handcrafted Jewelry</title>
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;500;600;700&family=Poppins:wght@300;400;500;600&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+  <link rel="stylesheet" href="/css/style.css">
+</head>
+<body>
+  <!-- Header with Logo -->
+  <header>
+    <div class="container">
+      <div class="logo">
+        <i class="fas fa-gem"></i>
+        <h1>Niva Jewels</h1>
+      </div>
+      <nav>
+        <a href="/" class="active">Home</a>
+        <a href="/cart.html"><i class="fas fa-shopping-cart"></i> Cart <span id="cartCount">0</span></a>
+      </nav>
+    </div>
+  </header>
+
+  <!-- Hero Section -->
+  <section class="hero">
+    <div class="hero-content">
+      <h2>Elegance Redefined</h2>
+      <p>Discover our exquisite collection of handcrafted jewelry, designed to celebrate your unique beauty</p>
+      <a href="#products" class="btn-primary">Shop Now</a>
+    </div>
+  </section>
+
+  <!-- Products Section -->
+  <section id="products" class="products-section">
+    <div class="container">
+      <h2 class="section-title">Our Collection</h2>
+      <div class="products-grid" id="productsGrid">
+        <!-- Products loaded dynamically -->
+        <div class="loading">Loading exquisite pieces...</div>
+      </div>
+    </div>
+  </section>
+
+  <!-- WhatsApp Floating Button -->
+  <a href="https://wa.me/919706011300?text=Hello%20Niva%20Jewels%2C%20I'm%20interested%20in%20your%20jewelry%20collection" 
+     class="whatsapp-float" target="_blank">
+    <i class="fab fa-whatsapp"></i>
+    <span>Chat with us</span>
+  </a>
+
+  <footer>
+    <div class="container">
+      <p>&copy; 2025 Niva Jewels. Crafted with love. All rights reserved.</p>
+    </div>
+  </footer>
+
+  <script src="/js/main.js"></script>
+</body>
+</html>
