@@ -1,47 +1,765 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Niva Jewels - Exquisite Jewelry</title>
-    <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
-    <link rel="stylesheet" href="style.css">
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+  <title>Lumière Jewels | Timeless Elegance</title>
+  <!-- Google Fonts + Font Awesome 6 -->
+  <link href="https://fonts.googleapis.com/css2?family=Inter:opsz,wght@14..32,300;14..32,400;14..32,500;14..32,600;14..32,700&family=Playfair+Display:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body {
+      font-family: 'Inter', sans-serif;
+      background: #FEFBF6;
+      color: #2C2418;
+      scroll-behavior: smooth;
+    }
+
+    h1, h2, h3, .logo {
+      font-family: 'Playfair Display', serif;
+    }
+
+    /* container */
+    .container {
+      max-width: 1280px;
+      margin: 0 auto;
+      padding: 0 24px;
+    }
+
+    /* header */
+    header {
+      background: #FFFFFF;
+      box-shadow: 0 4px 20px rgba(0,0,0,0.02), 0 1px 2px rgba(0,0,0,0.05);
+      position: sticky;
+      top: 0;
+      z-index: 100;
+      backdrop-filter: blur(0px);
+    }
+
+    .navbar {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 18px 0;
+      flex-wrap: wrap;
+      gap: 16px;
+    }
+
+    .logo {
+      font-size: 1.8rem;
+      font-weight: 600;
+      letter-spacing: -0.5px;
+      background: linear-gradient(135deg, #C7A252, #A67C2E);
+      background-clip: text;
+      -webkit-background-clip: text;
+      color: transparent;
+    }
+    .logo span {
+      font-size: 1rem;
+      background: none;
+      color: #A67C2E;
+      font-family: 'Inter', sans-serif;
+      font-weight: 400;
+    }
+
+    .cart-icon {
+      position: relative;
+      cursor: pointer;
+      background: #F9F3E9;
+      padding: 10px 16px;
+      border-radius: 48px;
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      transition: all 0.2s ease;
+      border: 1px solid #F0E3D4;
+    }
+    .cart-icon:hover {
+      background: #F0E3D4;
+    }
+    .cart-icon i {
+      font-size: 1.4rem;
+      color: #8B6946;
+    }
+    .cart-count {
+      background: #C7A252;
+      color: white;
+      border-radius: 40px;
+      padding: 2px 8px;
+      font-size: 0.75rem;
+      font-weight: 600;
+      min-width: 22px;
+      text-align: center;
+    }
+
+    /* hero */
+    .hero {
+      background: linear-gradient(120deg, #FCF6ED 0%, #FAF1E2 100%);
+      margin-bottom: 48px;
+      border-radius: 0 0 40px 40px;
+      padding: 48px 0 56px;
+      text-align: center;
+    }
+    .hero h1 {
+      font-size: 2.8rem;
+      font-weight: 600;
+      color: #2C2418;
+      margin-bottom: 12px;
+    }
+    .hero p {
+      font-size: 1.1rem;
+      color: #6B4E2E;
+      max-width: 580px;
+      margin: 0 auto;
+    }
+
+    /* product grid */
+    .section-title {
+      font-size: 1.8rem;
+      font-weight: 600;
+      margin-bottom: 32px;
+      position: relative;
+      display: inline-block;
+    }
+    .section-title:after {
+      content: '';
+      display: block;
+      width: 60px;
+      height: 3px;
+      background: #C7A252;
+      margin-top: 8px;
+      border-radius: 4px;
+    }
+    .products-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+      gap: 32px;
+      margin: 40px 0 60px;
+    }
+    .product-card {
+      background: white;
+      border-radius: 28px;
+      overflow: hidden;
+      transition: all 0.3s cubic-bezier(0.2, 0, 0, 1);
+      box-shadow: 0 10px 20px rgba(0,0,0,0.02), 0 6px 6px rgba(0,0,0,0.03);
+      border: 1px solid #F2E8DD;
+    }
+    .product-card:hover {
+      transform: translateY(-6px);
+      box-shadow: 0 24px 36px -12px rgba(0,0,0,0.12);
+      border-color: #E8D9CA;
+    }
+    .product-img {
+      width: 100%;
+      aspect-ratio: 1 / 1;
+      object-fit: cover;
+      background: #FCF8F2;
+      transition: transform 0.4s ease;
+    }
+    .product-card:hover .product-img {
+      transform: scale(1.02);
+    }
+    .product-info {
+      padding: 20px 18px 22px;
+    }
+    .product-title {
+      font-size: 1.25rem;
+      font-weight: 600;
+      margin-bottom: 8px;
+      font-family: 'Playfair Display', serif;
+    }
+    .product-price {
+      font-size: 1.3rem;
+      font-weight: 700;
+      color: #B67F3A;
+      margin: 12px 0 16px;
+    }
+    .add-to-cart {
+      background: #2C2418;
+      border: none;
+      width: 100%;
+      padding: 12px 0;
+      border-radius: 40px;
+      color: white;
+      font-weight: 600;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 8px;
+      cursor: pointer;
+      transition: all 0.2s;
+      font-size: 0.9rem;
+    }
+    .add-to-cart i {
+      font-size: 0.9rem;
+    }
+    .add-to-cart:hover {
+      background: #C7A252;
+      transform: scale(0.98);
+    }
+
+    /* cart sidebar overlay */
+    .cart-overlay {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background-color: rgba(0,0,0,0.4);
+      backdrop-filter: blur(3px);
+      visibility: hidden;
+      opacity: 0;
+      transition: visibility 0.2s, opacity 0.2s;
+      z-index: 1000;
+    }
+    .cart-overlay.open {
+      visibility: visible;
+      opacity: 1;
+    }
+    .cart-sidebar {
+      position: fixed;
+      right: -100%;
+      top: 0;
+      width: 100%;
+      max-width: 460px;
+      height: 100%;
+      background: #FFFFFF;
+      box-shadow: -8px 0 30px rgba(0,0,0,0.1);
+      transition: right 0.3s ease-in-out;
+      display: flex;
+      flex-direction: column;
+      z-index: 1001;
+    }
+    .cart-overlay.open .cart-sidebar {
+      right: 0;
+    }
+    .cart-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 24px 24px 16px;
+      border-bottom: 1px solid #F0E3D4;
+    }
+    .cart-header h2 {
+      font-size: 1.6rem;
+      font-weight: 500;
+    }
+    .close-cart {
+      background: none;
+      border: none;
+      font-size: 1.6rem;
+      cursor: pointer;
+      color: #7F6B52;
+    }
+    .cart-items {
+      flex: 1;
+      overflow-y: auto;
+      padding: 20px 20px 16px;
+      display: flex;
+      flex-direction: column;
+      gap: 20px;
+    }
+    .cart-empty-msg {
+      text-align: center;
+      color: #A28C70;
+      padding: 40px 20px;
+      font-weight: 500;
+    }
+    .cart-item {
+      display: flex;
+      gap: 14px;
+      background: #FEFAF5;
+      border-radius: 24px;
+      padding: 12px;
+      border: 1px solid #F2E5D8;
+    }
+    .cart-item-img {
+      width: 70px;
+      height: 70px;
+      object-fit: cover;
+      border-radius: 16px;
+      background: #F2E8DD;
+    }
+    .cart-item-details {
+      flex: 1;
+    }
+    .cart-item-name {
+      font-weight: 600;
+      font-family: 'Playfair Display', serif;
+      margin-bottom: 4px;
+    }
+    .cart-item-price {
+      color: #B67F3A;
+      font-weight: 600;
+      font-size: 0.9rem;
+    }
+    .cart-quantity {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      margin-top: 10px;
+    }
+    .qty-btn {
+      background: #F0E3D4;
+      border: none;
+      width: 28px;
+      height: 28px;
+      border-radius: 40px;
+      font-weight: bold;
+      cursor: pointer;
+      font-size: 1rem;
+      transition: 0.1s;
+    }
+    .qty-btn:hover {
+      background: #E2D0BB;
+    }
+    .cart-item-qty {
+      font-weight: 500;
+      min-width: 20px;
+      text-align: center;
+    }
+    .remove-item {
+      background: none;
+      border: none;
+      color: #B67F3A;
+      cursor: pointer;
+      font-size: 1rem;
+      align-self: center;
+      padding: 8px;
+    }
+    .cart-footer {
+      padding: 20px 24px 28px;
+      border-top: 1px solid #F0E3D4;
+      background: white;
+    }
+    .cart-total {
+      display: flex;
+      justify-content: space-between;
+      font-weight: 700;
+      font-size: 1.3rem;
+      margin-bottom: 20px;
+    }
+    .checkout-btn, .clear-cart-btn {
+      width: 100%;
+      padding: 14px;
+      border-radius: 50px;
+      font-weight: 600;
+      border: none;
+      cursor: pointer;
+      font-size: 1rem;
+      transition: all 0.2s;
+    }
+    .checkout-btn {
+      background: #C7A252;
+      color: white;
+      margin-bottom: 12px;
+    }
+    .checkout-btn:hover {
+      background: #A98137;
+    }
+    .clear-cart-btn {
+      background: #F2E5D8;
+      color: #5E4B33;
+    }
+    .clear-cart-btn:hover {
+      background: #E6D5C2;
+    }
+    footer {
+      background: #F9F3E9;
+      margin-top: 70px;
+      padding: 32px 0;
+      text-align: center;
+      color: #6B4E2E;
+      font-size: 0.85rem;
+    }
+    @media (max-width: 640px) {
+      .hero h1 { font-size: 2rem; }
+      .container { padding: 0 18px; }
+      .products-grid { gap: 20px; }
+      .cart-sidebar { max-width: 100%; }
+    }
+    button {
+      cursor: pointer;
+    }
+    .toast-msg {
+      position: fixed;
+      bottom: 24px;
+      left: 50%;
+      transform: translateX(-50%);
+      background: #2C2418;
+      color: #FFF2E3;
+      padding: 10px 20px;
+      border-radius: 60px;
+      font-size: 0.85rem;
+      z-index: 1100;
+      opacity: 0;
+      transition: opacity 0.2s;
+      pointer-events: none;
+      white-space: nowrap;
+      font-weight: 500;
+    }
+  </style>
 </head>
-<body class="bg-gray-50">
-    <!-- Navigation -->
-    <nav class="bg-white shadow-md sticky top-0 z-50">
-        <div class="container mx-auto px-4 py-3 flex justify-between items-center">
-            <div class="flex items-center space-x-2">
-                <i class="fas fa-gem text-yellow-600 text-2xl"></i>
-                <span class="text-2xl font-bold text-gray-800">Niva <span class="text-yellow-600">Jewels</span></span>
+<body>
+
+<div class="toast-msg" id="toastMsg">✨ Item added to cart</div>
+
+<header>
+  <div class="container">
+    <div class="navbar">
+      <div class="logo">Lumière <span>JEWELS</span></div>
+      <div class="cart-icon" id="cartIconBtn">
+        <i class="fas fa-shopping-bag"></i>
+        <span class="cart-count" id="cartCountBadge">0</span>
+      </div>
+    </div>
+  </div>
+</header>
+
+<section class="hero">
+  <div class="container">
+    <h1>Timeless Treasures</h1>
+    <p>Handcrafted elegance, ethically sourced gems & precious metals — each piece tells a story.</p>
+  </div>
+</section>
+
+<main class="container">
+  <h2 class="section-title">Our Signature Collection</h2>
+  <div class="products-grid" id="productsGrid"></div>
+</main>
+
+<footer>
+  <div class="container">
+    <p>© 2025 Lumière Jewels — Radiance that lasts forever. Free shipping on all orders.</p>
+  </div>
+</footer>
+
+<!-- Cart Overlay -->
+<div class="cart-overlay" id="cartOverlay">
+  <div class="cart-sidebar" id="cartSidebar">
+    <div class="cart-header">
+      <h2><i class="fas fa-gem" style="font-size: 1.3rem; margin-right: 8px;"></i> Your Bag</h2>
+      <button class="close-cart" id="closeCartBtn"><i class="fas fa-times"></i></button>
+    </div>
+    <div class="cart-items" id="cartItemsContainer">
+      <div class="cart-empty-msg">Your jewellery box is empty. <br> Add beautiful pieces ✨</div>
+    </div>
+    <div class="cart-footer">
+      <div class="cart-total">
+        <span>Total</span>
+        <span id="cartTotalPrice">$0.00</span>
+      </div>
+      <button class="checkout-btn" id="checkoutBtn"><i class="fas fa-lock"></i> Secure Checkout</button>
+      <button class="clear-cart-btn" id="clearCartBtn"><i class="fas fa-trash-alt"></i> Clear Cart</button>
+    </div>
+  </div>
+</div>
+
+<script>
+  // ---------- PRODUCT DATA ----------
+  const PRODUCTS = [
+    {
+      id: 1,
+      name: "Elysian Diamond Ring",
+      price: 299,
+      image: "https://images.unsplash.com/photo-1605100804763-247f67b3557e?w=400&h=400&fit=crop",
+      alt: "Diamond solitaire ring"
+    },
+    {
+      id: 2,
+      name: "Aurora Pearl Necklace",
+      price: 459,
+      image: "https://images.unsplash.com/photo-1599643478518-a784e5dc4c8f?w=400&h=400&fit=crop",
+      alt: "Gold pearl necklace"
+    },
+    {
+      id: 3,
+      name: "Lumina Crystal Earrings",
+      price: 189,
+      image: "https://images.unsplash.com/photo-1535632066927-ab7c9ab60908?w=400&h=400&fit=crop",
+      alt: "Crystal drop earrings"
+    },
+    {
+      id: 4,
+      name: "Celeste Silver Bracelet",
+      price: 159,
+      image: "https://images.unsplash.com/photo-1611652022419-a9419f74343d?w=400&h=400&fit=crop",
+      alt: "Silver infinity bracelet"
+    },
+    {
+      id: 5,
+      name: "Ember Rose Pendant",
+      price: 279,
+      image: "https://images.unsplash.com/photo-1629224316810-9d3d3fbe41a3?w=400&h=400&fit=crop",
+      alt: "Rose gold pendant"
+    },
+    {
+      id: 6,
+      name: "Sapphire Halo Ring",
+      price: 349,
+      image: "https://images.unsplash.com/photo-1602173574767-37e019da44a8?w=400&h=400&fit=crop",
+      alt: "Blue sapphire ring"
+    }
+  ];
+
+  // ---------- CART STATE (localStorage) ----------
+  let cart = [];   // each item: { id, quantity }
+
+  // Helper: load cart from localStorage
+  function loadCartFromStorage() {
+    const stored = localStorage.getItem("lumiere_cart");
+    if (stored) {
+      try {
+        cart = JSON.parse(stored);
+        if (!Array.isArray(cart)) cart = [];
+      } catch(e) { cart = []; }
+    } else {
+      cart = [];
+    }
+    // ensure each cart item has quantity >0
+    cart = cart.filter(item => item && typeof item.id === 'number' && item.quantity > 0);
+    saveCartToStorage();
+    renderAllCartUI();
+  }
+
+  function saveCartToStorage() {
+    localStorage.setItem("lumiere_cart", JSON.stringify(cart));
+  }
+
+  // find product by id
+  function getProductById(id) {
+    return PRODUCTS.find(p => p.id === id);
+  }
+
+  // update cart badge & totals, re-render cart list
+  function renderAllCartUI() {
+    updateCartCountBadge();
+    renderCartItemsList();
+    updateCartTotal();
+  }
+
+  function updateCartCountBadge() {
+    const totalItems = cart.reduce((sum, item) => sum + item.quantity, 0);
+    const badge = document.getElementById("cartCountBadge");
+    if (badge) badge.innerText = totalItems;
+  }
+
+  function renderCartItemsList() {
+    const container = document.getElementById("cartItemsContainer");
+    if (!container) return;
+
+    if (cart.length === 0) {
+      container.innerHTML = `<div class="cart-empty-msg"><i class="fas fa-heart" style="opacity:0.6;"></i> Your jewellery box is empty. <br> Add beautiful pieces ✨</div>`;
+      return;
+    }
+
+    let html = '';
+    cart.forEach(cartItem => {
+      const product = getProductById(cartItem.id);
+      if (!product) return;
+      const itemTotal = product.price * cartItem.quantity;
+      html += `
+        <div class="cart-item" data-id="${cartItem.id}">
+          <img class="cart-item-img" src="${product.image}" alt="${product.alt}" loading="lazy">
+          <div class="cart-item-details">
+            <div class="cart-item-name">${product.name}</div>
+            <div class="cart-item-price">$${product.price.toFixed(2)}</div>
+            <div class="cart-quantity">
+              <button class="qty-btn decr-qty" data-id="${cartItem.id}">−</button>
+              <span class="cart-item-qty">${cartItem.quantity}</span>
+              <button class="qty-btn incr-qty" data-id="${cartItem.id}">+</button>
+              <button class="remove-item" data-id="${cartItem.id}" title="Remove"><i class="fas fa-trash-alt"></i></button>
             </div>
-            <div class="hidden md:flex space-x-6">
-                <a href="#" onclick="showPage('home')" class="nav-link text-gray-700 hover:text-yellow-600">Home</a>
-                <a href="#" onclick="showPage('products')" class="nav-link text-gray-700 hover:text-yellow-600">Shop</a>
-                <a href="#" onclick="showPage('cart')" class="nav-link text-gray-700 hover:text-yellow-600 relative">
-                    Cart <span id="cartCount" class="bg-yellow-600 text-white text-xs rounded-full px-1.5 py-0.5 ml-1">0</span>
-                </a>
-                <a href="#" id="authLink" onclick="showPage('login')" class="nav-link text-gray-700 hover:text-yellow-600">Login</a>
-                <a href="#" id="adminLink" style="display:none;" onclick="showPage('admin')" class="nav-link text-red-600 hover:text-red-800">Admin</a>
-                <a href="#" id="logoutBtn" style="display:none;" onclick="logout()" class="nav-link text-gray-700 hover:text-yellow-600">Logout</a>
-            </div>
-            <div class="md:hidden">
-                <button id="mobileMenuBtn" class="text-gray-700"><i class="fas fa-bars text-xl"></i></button>
-            </div>
+          </div>
+          <div style="font-weight:600; align-self:center;">$${itemTotal.toFixed(2)}</div>
         </div>
-    </nav>
+      `;
+    });
+    container.innerHTML = html;
 
-    <!-- Main Content -->
-    <main id="app" class="container mx-auto px-4 py-8 min-h-screen">
-        <!-- Dynamic content will be loaded here -->
-    </main>
+    // attach event listeners dynamically for cart controls
+    document.querySelectorAll('.decr-qty').forEach(btn => {
+      btn.addEventListener('click', (e) => {
+        const id = parseInt(btn.dataset.id);
+        updateQuantity(id, -1);
+      });
+    });
+    document.querySelectorAll('.incr-qty').forEach(btn => {
+      btn.addEventListener('click', (e) => {
+        const id = parseInt(btn.dataset.id);
+        updateQuantity(id, 1);
+      });
+    });
+    document.querySelectorAll('.remove-item').forEach(btn => {
+      btn.addEventListener('click', (e) => {
+        const id = parseInt(btn.dataset.id);
+        removeFromCart(id);
+      });
+    });
+  }
 
-    <!-- WhatsApp Floating Button -->
-    <a href="https://wa.me/919706011300" target="_blank" class="fixed bottom-6 right-6 bg-green-500 text-white p-4 rounded-full shadow-lg hover:bg-green-600 transition z-50">
-        <i class="fab fa-whatsapp text-2xl"></i>
-    </a>
+  function updateCartTotal() {
+    let total = 0;
+    cart.forEach(item => {
+      const prod = getProductById(item.id);
+      if (prod) total += prod.price * item.quantity;
+    });
+    const totalEl = document.getElementById("cartTotalPrice");
+    if (totalEl) totalEl.innerText = `$${total.toFixed(2)}`;
+  }
 
-    <script src="script.js"></script>
+  // modify quantity (+delta)
+  function updateQuantity(productId, delta) {
+    const idx = cart.findIndex(i => i.id === productId);
+    if (idx !== -1) {
+      const newQty = cart[idx].quantity + delta;
+      if (newQty <= 0) {
+        cart.splice(idx, 1);
+      } else {
+        cart[idx].quantity = newQty;
+      }
+      saveCartToStorage();
+      renderAllCartUI();
+    }
+  }
+
+  function removeFromCart(productId) {
+    cart = cart.filter(i => i.id !== productId);
+    saveCartToStorage();
+    renderAllCartUI();
+    showToast("🗑️ Item removed");
+  }
+
+  function addToCart(productId) {
+    const existing = cart.find(i => i.id === productId);
+    if (existing) {
+      existing.quantity += 1;
+    } else {
+      cart.push({ id: productId, quantity: 1 });
+    }
+    saveCartToStorage();
+    renderAllCartUI();
+    showToast("✨ Added to your bag");
+  }
+
+  function clearCart() {
+    if (cart.length === 0) {
+      showToast("Cart is already empty");
+      return;
+    }
+    cart = [];
+    saveCartToStorage();
+    renderAllCartUI();
+    showToast("Cart cleared");
+  }
+
+  function checkout() {
+    if (cart.length === 0) {
+      showToast("Your cart is empty. Add some treasures first 💎");
+      return;
+    }
+    const total = cart.reduce((sum, item) => sum + (getProductById(item.id)?.price || 0) * item.quantity, 0);
+    alert(`✨ Thank you for shopping at Lumière Jewels! ✨\nTotal: $${total.toFixed(2)}\nYour order has been placed. A confirmation will be sent to your email.`);
+    // clear cart after checkout
+    cart = [];
+    saveCartToStorage();
+    renderAllCartUI();
+    closeCartDrawer();
+    showToast("Order placed successfully!");
+  }
+
+  // toast notification
+  let toastTimeout;
+  function showToast(message) {
+    const toast = document.getElementById("toastMsg");
+    if (!toast) return;
+    toast.innerText = message;
+    toast.style.opacity = "1";
+    clearTimeout(toastTimeout);
+    toastTimeout = setTimeout(() => {
+      toast.style.opacity = "0";
+    }, 1800);
+  }
+
+  // -------- CART DRAWER UI ----------
+  const overlay = document.getElementById("cartOverlay");
+  const openCartBtn = document.getElementById("cartIconBtn");
+  const closeCartBtn = document.getElementById("closeCartBtn");
+
+  function openCartDrawer() {
+    overlay.classList.add("open");
+    document.body.style.overflow = "hidden";
+  }
+  function closeCartDrawer() {
+    overlay.classList.remove("open");
+    document.body.style.overflow = "";
+  }
+
+  if (openCartBtn) openCartBtn.addEventListener("click", openCartDrawer);
+  if (closeCartBtn) closeCartBtn.addEventListener("click", closeCartDrawer);
+  overlay.addEventListener("click", (e) => {
+    if (e.target === overlay) closeCartDrawer();
+  });
+
+  // product rendering
+  function renderProducts() {
+    const grid = document.getElementById("productsGrid");
+    if (!grid) return;
+    grid.innerHTML = "";
+    PRODUCTS.forEach(product => {
+      const card = document.createElement("div");
+      card.className = "product-card";
+      card.innerHTML = `
+        <img class="product-img" src="${product.image}" alt="${product.alt}" loading="lazy">
+        <div class="product-info">
+          <h3 class="product-title">${product.name}</h3>
+          <div class="product-price">$${product.price.toFixed(2)}</div>
+          <button class="add-to-cart" data-id="${product.id}">
+            <i class="fas fa-shopping-cart"></i> Add to Cart
+          </button>
+        </div>
+      `;
+      grid.appendChild(card);
+    });
+    // attach add to cart events
+    document.querySelectorAll(".add-to-cart").forEach(btn => {
+      btn.addEventListener("click", (e) => {
+        const id = parseInt(btn.dataset.id);
+        addToCart(id);
+      });
+    });
+  }
+
+  // Buttons in cart footer
+  document.getElementById("checkoutBtn")?.addEventListener("click", checkout);
+  document.getElementById("clearCartBtn")?.addEventListener("click", clearCart);
+
+  // initial load & storage sync
+  function init() {
+    renderProducts();
+    loadCartFromStorage();
+  }
+
+  // add fallback for images if any broken (graceful)
+  window.addEventListener("load", () => {
+    init();
+    // add small extra protection for unsplash images
+    const images = document.querySelectorAll("img");
+    images.forEach(img => {
+      img.addEventListener("error", function() {
+        if (!this.dataset.fallback) {
+          this.dataset.fallback = "true";
+          this.src = "https://placehold.co/400x400/F2E8DD/8B6946?text=Lumière";
+        }
+      });
+    });
+  });
+</script>
 </body>
 </html>
