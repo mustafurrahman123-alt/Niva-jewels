@@ -1,664 +1,683 @@
-              <!DOCTYPE html>
+                                    <!DOCTYPE html>
 <html lang="en">
 <head>
   <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
-  <title>Niva Jewels | Admin & Payment Portal</title>
-  <!-- Google Fonts + Font Awesome 6 -->
-  <link href="https://fonts.googleapis.com/css2?family=Inter:opsz,wght@14..32,300;14..32,400;14..32,500;14..32,600;14..32,700&family=Playfair+Display:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+  <title>Niva Jewels - Exquisite Elegance</title>
+  <!-- Bootstrap 5 + Icons + Fonts -->
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet">
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;500;600;700&family=Poppins:wght@300;400;500;600&display=swap" rel="stylesheet">
   <style>
     * {
-      margin: 0;
-      padding: 0;
-      box-sizing: border-box;
+      font-family: 'Poppins', sans-serif;
     }
-
     body {
-      font-family: 'Inter', sans-serif;
-      background: #FEFBF6;
-      color: #2C2418;
+      background: #fef9f2;
       scroll-behavior: smooth;
     }
-
-    h1, h2, h3, .logo {
+    h1, h2, h3, h4, .brand-font {
       font-family: 'Playfair Display', serif;
     }
-
-    .container {
-      max-width: 1280px;
-      margin: 0 auto;
-      padding: 0 24px;
-    }
-
-    /* header */
-    header {
-      background: #FFFFFF;
-      box-shadow: 0 4px 20px rgba(0,0,0,0.02), 0 1px 2px rgba(0,0,0,0.05);
-      position: sticky;
-      top: 0;
-      z-index: 100;
-      backdrop-filter: blur(0px);
-    }
-
-    .navbar {
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-      padding: 18px 0;
-      flex-wrap: wrap;
-      gap: 16px;
-    }
-
-    .logo {
+    .navbar-brand {
       font-size: 1.8rem;
-      font-weight: 600;
-      letter-spacing: -0.5px;
-      background: linear-gradient(135deg, #C7A252, #A67C2E);
-      background-clip: text;
-      -webkit-background-clip: text;
-      color: transparent;
+      font-weight: 700;
+      letter-spacing: 1px;
+      color: #c7a052 !important;
     }
-    .logo span {
-      font-size: 1rem;
-      background: none;
-      color: #A67C2E;
-      font-family: 'Inter', sans-serif;
-      font-weight: 400;
+    .nav-link {
+      font-weight: 500;
+      color: #4a3b2c !important;
+      transition: 0.3s;
     }
-
-    .nav-actions {
-      display: flex;
-      gap: 16px;
-      align-items: center;
+    .nav-link:hover {
+      color: #c7a052 !important;
     }
-
-    .admin-btn {
-      background: #F2E5D8;
+    .btn-gold {
+      background-color: #c7a052;
       border: none;
-      padding: 8px 18px;
-      border-radius: 40px;
-      font-weight: 600;
-      color: #5E4B33;
-      cursor: pointer;
-      transition: 0.2s;
-      font-size: 0.9rem;
-    }
-    .admin-btn:hover {
-      background: #E2D0BB;
-    }
-
-    .cart-icon {
-      position: relative;
-      cursor: pointer;
-      background: #F9F3E9;
-      padding: 10px 16px;
-      border-radius: 48px;
-      display: flex;
-      align-items: center;
-      gap: 8px;
-      transition: all 0.2s ease;
-      border: 1px solid #F0E3D4;
-    }
-    .cart-icon:hover {
-      background: #F0E3D4;
-    }
-    .cart-icon i {
-      font-size: 1.4rem;
-      color: #8B6946;
-    }
-    .cart-count {
-      background: #C7A252;
       color: white;
-      border-radius: 40px;
-      padding: 2px 8px;
-      font-size: 0.75rem;
       font-weight: 600;
-      min-width: 22px;
-      text-align: center;
+      padding: 8px 24px;
+      transition: 0.3s;
     }
-
-    /* hero */
-    .hero {
-      background: linear-gradient(120deg, #FCF6ED 0%, #FAF1E2 100%);
-      margin-bottom: 48px;
-      border-radius: 0 0 40px 40px;
-      padding: 48px 0 56px;
-      text-align: center;
+    .btn-gold:hover {
+      background-color: #a57c32;
+      transform: translateY(-2px);
+      box-shadow: 0 5px 12px rgba(199,160,82,0.3);
     }
-    .hero h1 {
-      font-size: 2.8rem;
+    .btn-outline-gold {
+      border: 2px solid #c7a052;
+      color: #c7a052;
+      background: transparent;
       font-weight: 600;
-      color: #2C2418;
-      margin-bottom: 12px;
     }
-    .hero p {
-      font-size: 1.1rem;
-      color: #6B4E2E;
+    .btn-outline-gold:hover {
+      background: #c7a052;
+      color: white;
     }
-
-    /* product grid */
-    .section-title {
-      font-size: 1.8rem;
-      font-weight: 600;
-      margin-bottom: 32px;
-      position: relative;
-      display: inline-block;
-    }
-    .section-title:after {
-      content: '';
-      display: block;
-      width: 60px;
-      height: 3px;
-      background: #C7A252;
-      margin-top: 8px;
-      border-radius: 4px;
-    }
-    .products-grid {
-      display: grid;
-      grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
-      gap: 32px;
-      margin: 40px 0 60px;
-    }
-    .product-card {
-      background: white;
-      border-radius: 28px;
+    .card {
+      border: none;
+      border-radius: 20px;
       overflow: hidden;
-      transition: all 0.3s;
-      box-shadow: 0 10px 20px rgba(0,0,0,0.02);
-      border: 1px solid #F2E8DD;
+      transition: transform 0.3s, box-shadow 0.3s;
+      background: white;
     }
-    .product-card:hover {
+    .card:hover {
       transform: translateY(-6px);
-      box-shadow: 0 24px 36px -12px rgba(0,0,0,0.12);
+      box-shadow: 0 20px 30px -10px rgba(0,0,0,0.1);
     }
     .product-img {
-      width: 100%;
-      aspect-ratio: 1 / 1;
+      height: 260px;
       object-fit: cover;
-      background: #FCF8F2;
+      transition: 0.5s;
     }
-    .product-info {
-      padding: 20px 18px 22px;
+    .card:hover .product-img {
+      transform: scale(1.03);
     }
-    .product-title {
-      font-size: 1.25rem;
-      font-weight: 600;
-      margin-bottom: 8px;
-    }
-    .product-price {
-      font-size: 1.3rem;
+    .price {
+      color: #c7a052;
       font-weight: 700;
-      color: #B67F3A;
-      margin: 12px 0 16px;
+      font-size: 1.3rem;
     }
-    .add-to-cart {
-      background: #2C2418;
-      border: none;
-      width: 100%;
-      padding: 12px 0;
-      border-radius: 40px;
-      color: white;
-      font-weight: 600;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      gap: 8px;
-      cursor: pointer;
-      transition: 0.2s;
+    .footer {
+      background: #2c241a;
+      color: #e0cfb1;
+      margin-top: 60px;
     }
-    .add-to-cart:hover {
-      background: #C7A252;
-    }
-
-    /* Admin Dashboard Panel */
-    .admin-panel {
-      background: white;
-      border-radius: 32px;
-      box-shadow: 0 20px 35px -12px rgba(0,0,0,0.1);
-      margin: 40px 0 20px;
-      padding: 24px;
-      border: 1px solid #F0E3D4;
-      display: none;
-    }
-    .admin-panel.visible {
-      display: block;
-    }
-    .admin-header {
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-      flex-wrap: wrap;
-      margin-bottom: 24px;
-      border-bottom: 1px solid #F0E3D4;
-      padding-bottom: 16px;
-    }
-    .orders-table {
-      overflow-x: auto;
-    }
-    .orders-table table {
-      width: 100%;
-      border-collapse: collapse;
-    }
-    .orders-table th, .orders-table td {
-      padding: 12px 8px;
-      text-align: left;
-      border-bottom: 1px solid #F2E5D8;
-      vertical-align: top;
-    }
-    .orders-table th {
-      background: #FCF6ED;
-      font-weight: 600;
-    }
-    .badge-pending {
-      background: #F3E1BE;
-      padding: 4px 8px;
-      border-radius: 30px;
-      font-size: 0.75rem;
-    }
-    .logout-admin {
-      background: none;
-      border: 1px solid #C7A252;
-      padding: 6px 16px;
-      border-radius: 40px;
-      cursor: pointer;
-    }
-
-    /* Cart / Payment Modal */
-    .modal-overlay {
-      position: fixed;
-      top: 0;
-      left: 0;
-      width: 100%;
-      height: 100%;
-      background: rgba(0,0,0,0.5);
-      backdrop-filter: blur(4px);
-      z-index: 2000;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      visibility: hidden;
-      opacity: 0;
-      transition: 0.2s;
-    }
-    .modal-overlay.open {
-      visibility: visible;
-      opacity: 1;
-    }
-    .payment-modal {
-      background: white;
-      max-width: 500px;
-      width: 90%;
-      border-radius: 36px;
-      padding: 28px 24px;
-      box-shadow: 0 30px 40px rgba(0,0,0,0.2);
-    }
-    .payment-modal h3 {
-      font-size: 1.7rem;
-      margin-bottom: 12px;
-    }
-    .payment-summary {
-      background: #FEFAF5;
-      padding: 16px;
-      border-radius: 24px;
-      margin: 20px 0;
-    }
-    .support-number {
-      background: #F9EFE2;
-      padding: 12px;
-      border-radius: 50px;
-      text-align: center;
-      margin: 16px 0;
-      font-weight: 600;
-    }
-    .support-number i {
-      margin-right: 8px;
-      color: #25D366;
-    }
-    .form-group {
-      margin-bottom: 16px;
-    }
-    .form-group input {
-      width: 100%;
-      padding: 14px;
-      border-radius: 40px;
-      border: 1px solid #E8D9CA;
-      font-size: 1rem;
-    }
-    .pay-btn {
-      background: #C7A252;
-      width: 100%;
-      padding: 14px;
-      border: none;
-      border-radius: 60px;
-      color: white;
-      font-weight: bold;
-      font-size: 1rem;
-      margin-top: 10px;
-      cursor: pointer;
-    }
-
-    /* cart sidebar (same as before) */
-    .cart-overlay { position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: rgba(0,0,0,0.4); backdrop-filter: blur(3px); visibility: hidden; opacity: 0; transition: 0.2s; z-index: 1000; }
-    .cart-overlay.open { visibility: visible; opacity: 1; }
-    .cart-sidebar { position: fixed; right: -100%; top: 0; width: 100%; max-width: 460px; height: 100%; background: white; transition: 0.3s; display: flex; flex-direction: column; z-index: 1001; box-shadow: -8px 0 30px rgba(0,0,0,0.1); }
-    .cart-overlay.open .cart-sidebar { right: 0; }
-    .cart-header { display: flex; justify-content: space-between; padding: 24px; border-bottom: 1px solid #F0E3D4; }
-    .cart-items { flex: 1; overflow-y: auto; padding: 20px; }
-    .cart-item { display: flex; gap: 14px; background: #FEFAF5; border-radius: 24px; padding: 12px; margin-bottom: 16px; }
-    .cart-footer { padding: 20px 24px 28px; border-top: 1px solid #F0E3D4; }
-    .checkout-btn { background: #C7A252; width: 100%; padding: 14px; border-radius: 50px; font-weight: bold; border: none; cursor: pointer; }
-    .clear-cart-btn { background: #F2E5D8; width: 100%; margin-top: 8px; padding: 12px; border-radius: 50px; border: none; }
-
-    /* WhatsApp float */
     .whatsapp-float {
       position: fixed;
-      bottom: 24px;
-      right: 24px;
-      background: #25D366;
+      bottom: 30px;
+      right: 30px;
+      background-color: #25D366;
       color: white;
+      border-radius: 50%;
       width: 60px;
       height: 60px;
-      border-radius: 50%;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      font-size: 2rem;
+      text-align: center;
+      font-size: 32px;
+      line-height: 60px;
+      z-index: 100;
       box-shadow: 0 4px 12px rgba(0,0,0,0.2);
-      z-index: 99;
       transition: 0.2s;
-      text-decoration: none;
     }
-    .whatsapp-float:hover { transform: scale(1.05); background: #20b859; }
-    .toast-msg {
-      position: fixed; bottom: 24px; left: 50%; transform: translateX(-50%);
-      background: #2C2418; color: #FFF2E3; padding: 10px 20px; border-radius: 60px;
-      z-index: 1100; opacity: 0; transition: 0.2s; pointer-events: none;
+    .whatsapp-float:hover {
+      background-color: #128C7E;
+      transform: scale(1.05);
+      color: white;
     }
-    footer { background: #F9F3E9; margin-top: 50px; padding: 32px 0; text-align: center; font-size: 0.85rem; }
-    @media (max-width: 640px) { .hero h1 { font-size: 2rem; } }
+    .admin-badge {
+      background: #c7a05220;
+      border-left: 5px solid #c7a052;
+    }
+    .cart-badge {
+      background: #c7a052;
+      color: white;
+      border-radius: 30px;
+      padding: 2px 8px;
+      font-size: 0.75rem;
+    }
+    .payment-card {
+      background: #fef3e2;
+      border-radius: 20px;
+      border: 1px solid #f0dbb4;
+    }
   </style>
 </head>
 <body>
 
-<div class="toast-msg" id="toastMsg">✨ Message</div>
-<!-- WhatsApp float -->
-<a href="https://wa.me/9706011300?text=Hello%20Lumière%20Jewels%2C%20I%20have%20a%20query%20about%20my%20order%20or%20payment." class="whatsapp-float" target="_blank"><i class="fab fa-whatsapp"></i></a>
+<!-- WhatsApp floating button -->
+<a href="https://wa.me/919706011300?text=Hello%20Niva%20Jewels%2C%20I%20have%20a%20query%20about%20jewellery." class="whatsapp-float" target="_blank">
+  <i class="fab fa-whatsapp"></i>
+</a>
 
-<header>
+<nav class="navbar navbar-expand-lg bg-white shadow-sm py-3">
   <div class="container">
-    <div class="navbar">
-      <div class="logo">Niva <span>JEWELS</span></div>
-      <div class="nav-actions">
-        <button class="admin-btn" id="adminLoginBtn"><i class="fas fa-user-shield"></i> Admin</button>
-        <div class="cart-icon" id="cartIconBtn">
-          <i class="fas fa-shopping-bag"></i>
-          <span class="cart-count" id="cartCountBadge">0</span>
-        </div>
-      </div>
+    <a class="navbar-brand" href="/"><i class="fas fa-gem me-2"></i>Niva Jewels</a>
+    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="collapse navbar-collapse" id="navbarNav">
+      <ul class="navbar-nav ms-auto align-items-center gap-2">
+        <li class="nav-item"><a class="nav-link" href="/">Home</a></li>
+        <li class="nav-item"><a class="nav-link" href="/products">Collection</a></li>
+        <li class="nav-item"><a class="nav-link position-relative" href="/cart"><i class="fas fa-shopping-bag"></i> Cart <span id="cartCountNav" class="cart-badge">0</span></a></li>
+        <li class="nav-item"><a class="nav-link" href="/admin/login"><i class="fas fa-user-shield"></i> Admin</a></li>
+      </ul>
     </div>
   </div>
-</header>
+</nav>
 
-<section class="hero">
-  <div class="container">
-    <h1>Timeless Treasures</h1>
-    <p>Handcrafted elegance | Secure online payment & order support: <strong>9706011300</strong> (Call/WhatsApp)</p>
-  </div>
-</section>
-
-<main class="container">
-  <h2 class="section-title">Our Signature Collection</h2>
-  <div class="products-grid" id="productsGrid"></div>
-
-  <!-- Admin Dashboard Panel -->
-  <div id="adminDashboard" class="admin-panel">
-    <div class="admin-header">
-      <h3><i class="fas fa-gem"></i> Admin Dashboard – Orders</h3>
-      <button class="logout-admin" id="adminLogoutBtn"><i class="fas fa-sign-out-alt"></i> Logout</button>
-    </div>
-    <div id="ordersListContainer" class="orders-table">
-      <p style="padding: 20px; text-align:center;">No orders placed yet.</p>
+<main>
+  <!-- DYNAMIC CONTENT -->
+  <div id="appRoot" class="container my-4">
+    <!-- content injected by JS routing -->
+    <div class="text-center py-5">
+      <div class="spinner-border text-warning" role="status"></div>
+      <p>Loading Niva Jewels...</p>
     </div>
   </div>
 </main>
 
-<footer>
+<footer class="footer pt-5 pb-3">
   <div class="container">
-    <p><i class="fas fa-phone-alt"></i> Payment & Order Support: <strong>9706011300</strong> | <i class="fab fa-whatsapp"></i> WhatsApp Query: <strong>9706011300</strong></p>
-    <p style="margin-top: 8px;">© 2025 Lumière Jewels — Secure online payment system powered by trusted gateway demo.</p>
+    <div class="row">
+      <div class="col-md-4">
+        <h5><i class="fas fa-gem"></i> Niva Jewels</h5>
+        <p>Timeless elegance crafted for you. Explore our exquisite jewellery collection.</p>
+        <p><i class="fab fa-whatsapp"></i> Query: <strong>+91 9706011300</strong> (WhatsApp)</p>
+      </div>
+      <div class="col-md-4">
+        <h5>Quick Links</h5>
+        <ul class="list-unstyled">
+          <li><a href="/" class="text-decoration-none text-footer-link" style="color:#e0cfb1;">Home</a></li>
+          <li><a href="/products" class="text-decoration-none text-footer-link" style="color:#e0cfb1;">Shop Now</a></li>
+          <li><a href="/admin/login" class="text-decoration-none text-footer-link" style="color:#e0cfb1;">Admin Panel</a></li>
+        </ul>
+      </div>
+      <div class="col-md-4">
+        <h5>Payment</h5>
+        <p>Online payment enabled: <strong class="text-warning">UPI: 9706011300</strong> (Google Pay / PhonePe)</p>
+        <p><i class="fas fa-credit-card"></i> Safe & Secure Checkout</p>
+      </div>
+    </div>
+    <hr class="bg-secondary">
+    <div class="text-center">© 2025 Niva Jewels - All that glitters is gold.</div>
   </div>
 </footer>
 
-<!-- Cart Sidebar -->
-<div class="cart-overlay" id="cartOverlay"><div class="cart-sidebar" id="cartSidebar"><div class="cart-header"><h2>Your Bag</h2><button class="close-cart" id="closeCartBtn"><i class="fas fa-times"></i></button></div><div class="cart-items" id="cartItemsContainer"><div class="cart-empty-msg">Your jewellery box is empty.</div></div><div class="cart-footer"><div class="cart-total" style="display:flex; justify-content:space-between; font-weight:700; margin-bottom:16px;"><span>Total</span><span id="cartTotalPrice">$0.00</span></div><button class="checkout-btn" id="checkoutBtn"><i class="fas fa-lock"></i> Proceed to Payment</button><button class="clear-cart-btn" id="clearCartBtn">Clear Cart</button></div></div></div>
-
-<!-- Admin Login Modal -->
-<div id="adminLoginModal" class="modal-overlay">
-  <div class="payment-modal" style="max-width: 400px;">
-    <h3>Admin Login</h3>
-    <p style="margin-bottom: 16px;">Enter credentials to manage orders</p>
-    <div class="form-group"><input type="text" id="adminUser" placeholder="Username" value="admin"></div>
-    <div class="form-group"><input type="password" id="adminPass" placeholder="Password" value="admin123"></div>
-    <div class="support-number" style="background:#F5EDE2;"><i class="fas fa-info-circle"></i> Demo: admin / admin123</div>
-    <button class="pay-btn" id="submitAdminLogin">Login</button>
-    <button style="background:#E8D9CA; margin-top:10px;" class="pay-btn" id="closeAdminModal">Cancel</button>
-  </div>
-</div>
-
-<!-- Payment Modal (Online Order & Payment) -->
-<div id="paymentModal" class="modal-overlay">
-  <div class="payment-modal">
-    <h3><i class="fas fa-credit-card"></i> Secure Checkout</h3>
-    <div id="paymentOrderSummary" class="payment-summary">Loading summary...</div>
-    <div class="support-number">
-      <i class="fas fa-headset"></i> Payment Assistance: <strong>9706011300</strong> (Call/WhatsApp)
-    </div>
-    <div class="form-group"><input type="text" id="customerName" placeholder="Full Name *" required></div>
-    <div class="form-group"><input type="tel" id="customerPhone" placeholder="Phone Number (optional)"></div>
-    <div class="form-group"><input type="email" id="customerEmail" placeholder="Email (order confirmation)"></div>
-    <button class="pay-btn" id="confirmOrderBtn"><i class="fas fa-check-circle"></i> Place Order & Pay (Demo)</button>
-    <button style="background:#E8D9CA; margin-top:10px;" class="pay-btn" id="closePaymentModal">Cancel</button>
-  </div>
-</div>
-
 <script>
-  // ---------- PRODUCT DATA ----------
-  const PRODUCTS = [
-    { id: 1, name: "Elysian Diamond Ring", price: 299, image: "https://images.unsplash.com/photo-1605100804763-247f67b3557e?w=400&h=400&fit=crop", alt: "Diamond ring" },
-    { id: 2, name: "Aurora Pearl Necklace", price: 459, image: "https://images.unsplash.com/photo-1599643478518-a784e5dc4c8f?w=400&h=400&fit=crop", alt: "Pearl necklace" },
-    { id: 3, name: "Lumina Crystal Earrings", price: 189, image: "https://images.unsplash.com/photo-1535632066927-ab7c9ab60908?w=400&h=400&fit=crop", alt: "Crystal earrings" },
-    { id: 4, name: "Celeste Silver Bracelet", price: 159, image: "https://images.unsplash.com/photo-1611652022419-a9419f74343d?w=400&h=400&fit=crop", alt: "Silver bracelet" },
-    { id: 5, name: "Ember Rose Pendant", price: 279, image: "https://images.unsplash.com/photo-1629224316810-9d3d3fbe41a3?w=400&h=400&fit=crop", alt: "Pendant" },
-    { id: 6, name: "Sapphire Halo Ring", price: 349, image: "https://images.unsplash.com/photo-1602173574767-37e019da44a8?w=400&h=400&fit=crop", alt: "Sapphire ring" }
+  // ------------------------ MOCK BACKEND (LocalStorage + Session) ------------------------
+  // Products Data (initial jewellery items)
+  let products = [
+    { id: "p1", name: "Eternal Radiance Necklace", price: 18999, description: "18K gold plated with real ruby accent, perfect for occasions.", image: "https://images.unsplash.com/photo-1617038260897-41a1f14a8ca0?w=500&auto=format", category: "necklace" },
+    { id: "p2", name: "Dew Drop Diamond Earrings", price: 24999, description: "Minimalist diamond studs, certified conflict-free diamonds.", image: "https://images.unsplash.com/photo-1535632066927-ab7c9ab60908?w=500&auto=format", category: "earrings" },
+    { id: "p3", name: "Royal Heritage Ring", price: 32999, description: "Sapphire and diamond halo ring, timeless elegance.", image: "https://images.unsplash.com/photo-1605100804763-247f67b3557e?w=500&auto=format", category: "ring" },
+    { id: "p4", name: "Golden Serenity Bracelet", price: 12999, description: "Adjustable gold plated bracelet with pearl charm.", image: "https://images.unsplash.com/photo-1611652022419-a9419f74343d?w=500&auto=format", category: "bracelet" },
+    { id: "p5", name: "Moonlit Pendant Set", price: 15999, description: "Lunar inspired pendant with chain, sterling silver.", image: "https://images.unsplash.com/photo-1599643478518-a784e5dc4c8f?w=500&auto=format", category: "pendant" },
+    { id: "p6", name: "Regal Cuff Bangle", price: 9999, description: "Traditional gold bangle with intricate engraving.", image: "https://images.unsplash.com/photo-1616683272136-2bee0a8a674e?w=500&auto=format", category: "bangle" }
   ];
 
-  // ---------- CART & ORDERS STORAGE ----------
-  let cart = [];  // { id, quantity }
+  // Admin credentials (hashed logic simulated)
+  const ADMIN_USER = "Mustafur";
+  const ADMIN_PASS = "Must123";
 
-  function loadCart() {
-    const stored = localStorage.getItem("lumiere_cart");
-    if (stored) { try { cart = JSON.parse(stored); if(!Array.isArray(cart)) cart=[]; } catch(e){ cart=[]; } }
-    else cart = [];
-    cart = cart.filter(i => i.quantity > 0);
+  // Orders array
+  let orders = JSON.parse(localStorage.getItem("niva_orders")) || [];
+  // Admin session
+  let adminLoggedIn = sessionStorage.getItem("adminAuth") === "true";
+  // Cart (key in localStorage)
+  let cart = JSON.parse(localStorage.getItem("niva_cart")) || [];
+
+  // Helper: save cart & update navbar
+  function saveCart() {
+    localStorage.setItem("niva_cart", JSON.stringify(cart));
+    updateCartCount();
+  }
+  function updateCartCount() {
+    const totalQty = cart.reduce((sum, item) => sum + item.quantity, 0);
+    const badge = document.getElementById("cartCountNav");
+    if (badge) badge.innerText = totalQty;
+  }
+
+  function addToCart(productId, qty = 1) {
+    const product = products.find(p => p.id === productId);
+    if (!product) return false;
+    const existing = cart.find(item => item.id === productId);
+    if (existing) {
+      existing.quantity += qty;
+    } else {
+      cart.push({ id: product.id, name: product.name, price: product.price, image: product.image, quantity: qty });
+    }
     saveCart();
-    updateCartUI();
+    return true;
   }
 
-  function saveCart() { localStorage.setItem("lumiere_cart", JSON.stringify(cart)); }
-
-  function getProductById(id) { return PRODUCTS.find(p => p.id === id); }
-
-  function updateCartUI() {
-    const totalItems = cart.reduce((s,i) => s+i.quantity, 0);
-    document.getElementById("cartCountBadge").innerText = totalItems;
-    renderCartSidebar();
+  function updateCartItem(productId, quantity) {
+    const idx = cart.findIndex(i => i.id === productId);
+    if (idx !== -1) {
+      if (quantity <= 0) cart.splice(idx, 1);
+      else cart[idx].quantity = quantity;
+      saveCart();
+    }
   }
 
-  function renderCartSidebar() {
-    const container = document.getElementById("cartItemsContainer");
-    if (!container) return;
-    if (cart.length === 0) { container.innerHTML = `<div class="cart-empty-msg">Your jewellery box is empty.</div>`; document.getElementById("cartTotalPrice").innerText = "$0.00"; return; }
-    let html = '';
-    let total = 0;
-    cart.forEach(cItem => {
-      const p = getProductById(cItem.id);
-      if(!p) return;
-      const itemTotal = p.price * cItem.quantity;
-      total += itemTotal;
-      html += `<div class="cart-item" data-id="${cItem.id}">
-        <img class="cart-item-img" src="${p.image}" width="70" height="70" style="border-radius:16px; object-fit:cover;">
-        <div style="flex:1"><div><strong>${p.name}</strong></div><div>$${p.price}</div>
-        <div style="display:flex; gap:12px; margin-top:8px;"><button class="qty-btn decr" data-id="${cItem.id}">−</button><span>${cItem.quantity}</span><button class="qty-btn incr" data-id="${cItem.id}">+</button>
-        <button class="remove-item" data-id="${cItem.id}" style="background:none; border:none; color:#B67F3A;"><i class="fas fa-trash"></i></button></div></div>
-        <div><strong>$${itemTotal.toFixed(2)}</strong></div></div>`;
+  // Simple router
+  function navigateTo(route) {
+    window.history.pushState({}, "", route);
+    renderRoute(route);
+  }
+
+  function renderRoute(path) {
+    const app = document.getElementById("appRoot");
+    if (!app) return;
+    if (path === "/" || path === "") {
+      renderHome();
+    } else if (path === "/products") {
+      renderProducts();
+    } else if (path.startsWith("/product/")) {
+      const id = path.split("/product/")[1];
+      renderProductDetail(id);
+    } else if (path === "/cart") {
+      renderCart();
+    } else if (path === "/checkout") {
+      renderCheckout();
+    } else if (path.startsWith("/order/success/")) {
+      const orderId = path.split("/order/success/")[1];
+      renderOrderSuccess(orderId);
+    } else if (path === "/admin/login") {
+      renderAdminLogin();
+    } else if (path === "/admin/dashboard") {
+      renderAdminDashboard();
+    } else if (path === "/admin/products") {
+      renderAdminProducts();
+    } else if (path === "/admin/orders") {
+      renderAdminOrders();
+    } else {
+      renderHome();
+    }
+  }
+
+  // Homepage
+  function renderHome() {
+    const featured = products.slice(0, 3);
+    document.getElementById("appRoot").innerHTML = `
+      <div class="text-center mb-5">
+        <h1 class="display-4 fw-bold" style="color:#5a3e1b;">Niva Jewels</h1>
+        <p class="lead">Timeless craftsmanship, radiant stories</p>
+        <a href="/products" class="btn btn-gold mt-2">Explore Collection <i class="fas fa-arrow-right"></i></a>
+      </div>
+      <div class="row g-4">
+        ${products.map(p => `
+          <div class="col-md-4">
+            <div class="card h-100">
+              <img src="${p.image}" class="product-img" alt="${p.name}">
+              <div class="card-body">
+                <h5 class="card-title">${p.name}</h5>
+                <p class="card-text text-truncate">${p.description}</p>
+                <p class="price">₹${p.price.toLocaleString()}</p>
+                <button class="btn btn-outline-gold w-100 add-to-cart-btn" data-id="${p.id}"><i class="fas fa-shopping-cart"></i> Add to Cart</button>
+              </div>
+            </div>
+          </div>
+        `).join('')}
+      </div>
+      <div class="row mt-5 py-4 payment-card p-4">
+        <div class="col-12 text-center">
+          <h4><i class="fas fa-mobile-alt"></i> Online Payment Enabled</h4>
+          <p>Pay seamlessly via UPI: <strong class="h5 text-dark">9706011300</strong> (Google Pay, PhonePe, Paytm)</p>
+          <small>Your transaction is secure with end-to-end encryption</small>
+        </div>
+      </div>
+    `;
+    attachAddToCartEvents();
+  }
+
+  function renderProducts() {
+    document.getElementById("appRoot").innerHTML = `
+      <h2 class="mb-4 fw-bold">Our Exclusive Collection</h2>
+      <div class="row g-4">
+        ${products.map(p => `
+          <div class="col-md-4 col-lg-3">
+            <div class="card h-100">
+              <img src="${p.image}" class="product-img" alt="${p.name}">
+              <div class="card-body">
+                <h5 class="card-title">${p.name}</h5>
+                <p class="price">₹${p.price.toLocaleString()}</p>
+                <div class="d-flex gap-2">
+                  <a href="/product/${p.id}" class="btn btn-sm btn-outline-secondary">View</a>
+                  <button class="btn btn-sm btn-gold add-to-cart-btn" data-id="${p.id}">Add to Cart</button>
+                </div>
+              </div>
+            </div>
+          </div>
+        `).join('')}
+      </div>
+    `;
+    attachAddToCartEvents();
+  }
+
+  function renderProductDetail(id) {
+    const product = products.find(p => p.id === id);
+    if (!product) return renderProducts();
+    document.getElementById("appRoot").innerHTML = `
+      <div class="row align-items-center">
+        <div class="col-md-6">
+          <img src="${product.image}" class="img-fluid rounded-4 shadow" alt="${product.name}">
+        </div>
+        <div class="col-md-6">
+          <h2 class="display-6">${product.name}</h2>
+          <p class="lead text-warning fw-bold">₹${product.price.toLocaleString()}</p>
+          <p>${product.description}</p>
+          <div class="input-group w-50 mb-3">
+            <input type="number" id="qty" class="form-control" value="1" min="1" max="10">
+            <button class="btn btn-gold" id="detailAddCart">Add to Bag</button>
+          </div>
+          <a href="/products" class="btn btn-link">← Back to Collection</a>
+        </div>
+      </div>
+    `;
+    document.getElementById("detailAddCart")?.addEventListener("click", () => {
+      let qty = parseInt(document.getElementById("qty").value);
+      addToCart(product.id, qty);
+      alert(`${product.name} added to cart!`);
     });
-    container.innerHTML = html;
-    document.getElementById("cartTotalPrice").innerText = `$${total.toFixed(2)}`;
-    document.querySelectorAll('.decr').forEach(btn => btn.addEventListener('click', (e) => { let id = parseInt(btn.dataset.id); updateQty(id, -1); }));
-    document.querySelectorAll('.incr').forEach(btn => btn.addEventListener('click', (e) => { let id = parseInt(btn.dataset.id); updateQty(id, 1); }));
-    document.querySelectorAll('.remove-item').forEach(btn => btn.addEventListener('click', (e) => { let id = parseInt(btn.dataset.id); removeCartItem(id); }));
   }
 
-  function updateQty(id, delta) {
-    let idx = cart.findIndex(i => i.id === id);
-    if (idx !== -1) { cart[idx].quantity += delta; if(cart[idx].quantity <= 0) cart.splice(idx,1); }
-    saveCart(); updateCartUI();
+  function renderCart() {
+    if (cart.length === 0) {
+      document.getElementById("appRoot").innerHTML = `<div class="alert alert-info text-center p-5">Your cart is empty. <a href="/products">Shop now</a></div>`;
+      return;
+    }
+    let total = cart.reduce((sum, i) => sum + (i.price * i.quantity), 0);
+    document.getElementById("appRoot").innerHTML = `
+      <h2>Shopping Bag</h2>
+      <div class="row">
+        <div class="col-lg-8">
+          ${cart.map(item => `
+            <div class="card mb-3 p-2">
+              <div class="row g-0 align-items-center">
+                <div class="col-3"><img src="${item.image}" class="img-fluid rounded" style="height:80px; object-fit:cover;"></div>
+                <div class="col-5"><h6>${item.name}</h6><span>₹${item.price}</span></div>
+                <div class="col-2"><input type="number" min="1" value="${item.quantity}" class="form-control cart-qty" data-id="${item.id}"></div>
+                <div class="col-2"><button class="btn btn-sm btn-danger remove-item" data-id="${item.id}"><i class="fas fa-trash"></i></button></div>
+              </div>
+            </div>
+          `).join('')}
+        </div>
+        <div class="col-lg-4">
+          <div class="card p-3">
+            <h5>Order Summary</h5>
+            <hr>
+            <p>Total: <strong class="price">₹${total.toLocaleString()}</strong></p>
+            <a href="/checkout" class="btn btn-gold w-100">Proceed to Checkout</a>
+          </div>
+        </div>
+      </div>
+    `;
+    // quantity changes
+    document.querySelectorAll(".cart-qty").forEach(inp => {
+      inp.addEventListener("change", (e) => {
+        const pid = inp.dataset.id;
+        let newQty = parseInt(inp.value);
+        updateCartItem(pid, newQty);
+        renderCart();
+      });
+    });
+    document.querySelectorAll(".remove-item").forEach(btn => {
+      btn.addEventListener("click", (e) => {
+        const pid = btn.dataset.id;
+        updateCartItem(pid, 0);
+        renderCart();
+      });
+    });
   }
-  function removeCartItem(id) { cart = cart.filter(i => i.id !== id); saveCart(); updateCartUI(); showToast("Item removed"); }
-  function addToCart(id) { let existing = cart.find(i => i.id === id); if(existing) existing.quantity++; else cart.push({id, quantity:1}); saveCart(); updateCartUI(); showToast("✨ Added to bag"); }
 
-  // ---------- ORDERS SYSTEM ----------
-  let orders = [];  // { id, date, customerName, customerPhone, items, total, status }
-  function loadOrders() { const stored = localStorage.getItem("lumiere_orders"); if(stored) { try{ orders = JSON.parse(stored); } catch(e){ orders=[]; } } else orders = []; }
-  function saveOrders() { localStorage.setItem("lumiere_orders", JSON.stringify(orders)); }
+  function renderCheckout() {
+    if (cart.length === 0) {
+      navigateTo("/cart");
+      return;
+    }
+    let totalAmount = cart.reduce((s, i) => s + i.price * i.quantity, 0);
+    document.getElementById("appRoot").innerHTML = `
+      <div class="row justify-content-center">
+        <div class="col-md-8">
+          <div class="card p-4 shadow-sm">
+            <h3>Secure Checkout</h3>
+            <hr>
+            <form id="checkoutForm">
+              <div class="mb-3">
+                <label>Full Name *</label>
+                <input type="text" id="fullName" class="form-control" required>
+              </div>
+              <div class="mb-3">
+                <label>Shipping Address *</label>
+                <textarea id="address" class="form-control" rows="2" required></textarea>
+              </div>
+              <div class="mb-3">
+                <label>Phone Number *</label>
+                <input type="tel" id="phone" class="form-control" required>
+              </div>
+              <div class="alert alert-warning payment-card">
+                <i class="fas fa-rupee-sign"></i> <strong>Online Payment (UPI)</strong><br>
+                Total: <strong>₹${totalAmount.toLocaleString()}</strong><br>
+                Pay to UPI ID: <span class="badge bg-dark fs-6">9706011300@apl</span> (QR available via any UPI app)<br>
+                <small>After successful payment, click "Confirm Order"</small>
+                <div class="form-check mt-2">
+                  <input class="form-check-input" type="checkbox" id="paymentConfirm" required>
+                  <label class="form-check-label">I have made the payment of ₹${totalAmount} to UPI 9706011300</label>
+                </div>
+              </div>
+              <button type="submit" class="btn btn-gold w-100">Place Order (Payment Verified)</button>
+            </form>
+          </div>
+        </div>
+      </div>
+    `;
+    document.getElementById("checkoutForm").addEventListener("submit", (e) => {
+      e.preventDefault();
+      const name = document.getElementById("fullName").value;
+      const addr = document.getElementById("address").value;
+      const phone = document.getElementById("phone").value;
+      const paymentChecked = document.getElementById("paymentConfirm").checked;
+      if (!name || !addr || !phone || !paymentChecked) {
+        alert("Please fill all details and confirm payment to UPI 9706011300");
+        return;
+      }
+      // create order
+      const orderId = "ORD" + Date.now();
+      const newOrder = {
+        id: orderId,
+        customer: { name, address: addr, phone },
+        items: cart.map(i => ({ name: i.name, price: i.price, quantity: i.quantity, productId: i.id })),
+        total: totalAmount,
+        paymentMethod: "UPI (9706011300)",
+        paymentStatus: "Paid",
+        orderDate: new Date().toISOString(),
+        status: "Confirmed"
+      };
+      orders.unshift(newOrder);
+      localStorage.setItem("niva_orders", JSON.stringify(orders));
+      // clear cart
+      cart = [];
+      saveCart();
+      navigateTo(`/order/success/${orderId}`);
+    });
+  }
 
-  function placeOrder(customerName, customerPhone, customerEmail) {
-    if (cart.length === 0) { showToast("Cart is empty"); return false; }
-    const items = cart.map(i => ({ id: i.id, name: getProductById(i.id).name, quantity: i.quantity, price: getProductById(i.id).price }));
-    const total = items.reduce((sum, it) => sum + (it.price * it.quantity), 0);
-    const newOrder = {
-      id: Date.now(),
-      date: new Date().toLocaleString(),
-      customerName: customerName.trim(),
-      customerPhone: customerPhone || "—",
-      customerEmail: customerEmail || "—",
-      items: items,
-      total: total,
-      status: "Pending"
-    };
-    orders.unshift(newOrder);
-    saveOrders();
-    // clear cart
-    cart = [];
-    saveCart();
-    updateCartUI();
-    return newOrder;
+  function renderOrderSuccess(orderId) {
+    const order = orders.find(o => o.id === orderId);
+    if (!order) {
+      navigateTo("/");
+      return;
+    }
+    document.getElementById("appRoot").innerHTML = `
+      <div class="text-center p-5 shadow-sm rounded-4 bg-white">
+        <i class="fas fa-check-circle fa-4x text-success mb-3"></i>
+        <h3>Order Placed Successfully!</h3>
+        <p>Thank you for shopping at Niva Jewels. Your order ID: <strong>${order.id}</strong></p>
+        <p>We have received your payment via UPI: 9706011300. You'll get updates soon.</p>
+        <a href="/" class="btn btn-gold">Continue Shopping</a>
+      </div>
+    `;
+  }
+
+  // ADMIN PANEL (Login, Dashboard, Products, Orders)
+  function renderAdminLogin() {
+    document.getElementById("appRoot").innerHTML = `
+      <div class="row justify-content-center mt-5">
+        <div class="col-md-5">
+          <div class="card shadow">
+            <div class="card-header bg-dark text-white text-center"><i class="fas fa-gem"></i> Niva Jewels Admin</div>
+            <div class="card-body">
+              <form id="adminLoginForm">
+                <div class="mb-3">
+                  <label>Username</label>
+                  <input type="text" id="adminUser" class="form-control" placeholder="Mustafur">
+                </div>
+                <div class="mb-3">
+                  <label>Password</label>
+                  <input type="password" id="adminPass" class="form-control">
+                </div>
+                <button class="btn btn-dark w-100">Login</button>
+              </form>
+            </div>
+          </div>
+        </div>
+      </div>
+    `;
+    document.getElementById("adminLoginForm").addEventListener("submit", (e) => {
+      e.preventDefault();
+      const u = document.getElementById("adminUser").value;
+      const p = document.getElementById("adminPass").value;
+      if (u === ADMIN_USER && p === ADMIN_PASS) {
+        sessionStorage.setItem("adminAuth", "true");
+        adminLoggedIn = true;
+        navigateTo("/admin/dashboard");
+      } else {
+        alert("Invalid credentials! Use Mustafur / Must123");
+      }
+    });
+  }
+
+  function checkAdminAuth() {
+    if (!adminLoggedIn && sessionStorage.getItem("adminAuth") !== "true") {
+      navigateTo("/admin/login");
+      return false;
+    }
+    return true;
+  }
+
+  function renderAdminDashboard() {
+    if (!checkAdminAuth()) return;
+    document.getElementById("appRoot").innerHTML = `
+      <div class="d-flex justify-content-between align-items-center mb-4">
+        <h2>Admin Dashboard <span class="badge bg-warning">Mustafur</span></h2>
+        <button id="adminLogout" class="btn btn-sm btn-danger">Logout</button>
+      </div>
+      <div class="row g-4">
+        <div class="col-md-6"><div class="card p-4 text-center"><i class="fas fa-box fa-3x"></i><h4>Total Products</h4><p>${products.length}</p><a href="/admin/products" class="btn btn-outline-gold">Manage Products</a></div></div>
+        <div class="col-md-6"><div class="card p-4 text-center"><i class="fas fa-truck fa-3x"></i><h4>Orders</h4><p>${orders.length}</p><a href="/admin/orders" class="btn btn-outline-gold">View Orders</a></div></div>
+      </div>
+      <div class="mt-4 p-3 bg-light"><i class="fas fa-phone-alt"></i> WhatsApp Support: +91 9706011300 | Online Payment UPI: 9706011300 enabled</div>
+    `;
+    document.getElementById("adminLogout")?.addEventListener("click", () => {
+      sessionStorage.removeItem("adminAuth");
+      adminLoggedIn = false;
+      navigateTo("/admin/login");
+    });
+  }
+
+  function renderAdminProducts() {
+    if (!checkAdminAuth()) return;
+    document.getElementById("appRoot").innerHTML = `
+      <div class="d-flex justify-content-between mb-3"><h3>Manage Products</h3><button id="addProductBtn" class="btn btn-gold">+ Add New Product</button></div>
+      <table class="table table-bordered bg-white">
+        <thead><tr><th>Image</th><th>Name</th><th>Price</th><th>Actions</th></tr></thead>
+        <tbody>
+          ${products.map(p => `
+            <tr>
+              <td><img src="${p.image}" width="50" height="50" style="object-fit:cover;"></td>
+              <td>${p.name}</td>
+              <td>₹${p.price}</td>
+              <td><button class="btn btn-sm btn-warning editProdBtn" data-id="${p.id}">Edit</button> <button class="btn btn-sm btn-danger deleteProdBtn" data-id="${p.id}">Delete</button></td>
+            </tr>
+          `).join('')}
+        </tbody>
+      </table>
+      <a href="/admin/dashboard" class="btn btn-secondary">← Back</a>
+    `;
+    document.querySelectorAll(".deleteProdBtn").forEach(btn => {
+      btn.addEventListener("click", (e) => {
+        const id = btn.dataset.id;
+        if (confirm("Delete product?")) {
+          products = products.filter(p => p.id !== id);
+          renderAdminProducts();
+        }
+      });
+    });
+    document.querySelectorAll(".editProdBtn").forEach(btn => {
+      btn.addEventListener("click", (e) => {
+        const id = btn.dataset.id;
+        const prod = products.find(p => p.id === id);
+        const newName = prompt("New name", prod.name);
+        const newPrice = prompt("New price", prod.price);
+        const newDesc = prompt("Description", prod.description);
+        const newImg = prompt("Image URL", prod.image);
+        if (newName) prod.name = newName;
+        if (newPrice && !isNaN(newPrice)) prod.price = parseFloat(newPrice);
+        if (newDesc) prod.description = newDesc;
+        if (newImg) prod.image = newImg;
+        renderAdminProducts();
+      });
+    });
+    document.getElementById("addProductBtn").addEventListener("click", () => {
+      const newId = "p" + (products.length + 7);
+      const name = prompt("Product Name");
+      const price = parseFloat(prompt("Price"));
+      const desc = prompt("Description");
+      const img = prompt("Image URL", "https://images.unsplash.com/photo-1617038260897-41a1f14a8ca0?w=500");
+      if (name && price) {
+        products.push({ id: newId, name, price, description: desc || "Exquisite jewellery", image: img, category: "new" });
+        renderAdminProducts();
+      }
+    });
   }
 
   function renderAdminOrders() {
-    const container = document.getElementById("ordersListContainer");
-    if (!container) return;
-    if (orders.length === 0) { container.innerHTML = `<p style="padding:20px; text-align:center;">No orders placed yet.</p>`; return; }
-    let html = `<table style="width:100%"><thead><tr><th>Order ID</th><th>Date</th><th>Customer</th><th>Items</th><th>Total</th><th>Status</th></tr></thead><tbody>`;
-    orders.forEach(order => {
-      const itemsList = order.items.map(it => `${it.name} (x${it.quantity})`).join(", ");
-      html += `<tr><td>#${order.id}</td><td>${order.date}</td><td>${order.customerName}<br><small>${order.customerPhone}</small></td><td>${itemsList.substring(0, 60)}</td><td>$${order.total.toFixed(2)}</td><td><span class="badge-pending">${order.status}</span></td></tr>`;
+    if (!checkAdminAuth()) return;
+    if (orders.length === 0) {
+      document.getElementById("appRoot").innerHTML = `<div class="alert alert-info">No orders yet.</div><a href="/admin/dashboard">Back</a>`;
+      return;
+    }
+    document.getElementById("appRoot").innerHTML = `
+      <h3>Customer Orders <span class="badge bg-primary">Total: ${orders.length}</span></h3>
+      <div class="list-group">
+        ${orders.map(order => `
+          <div class="list-group-item mb-3 border rounded">
+            <div class="d-flex justify-content-between"><strong>Order #${order.id}</strong> <span class="badge bg-success">${order.paymentStatus}</span></div>
+            <div><strong>${order.customer.name}</strong> | ${order.customer.phone}<br>${order.customer.address}</div>
+            <div>Items: ${order.items.map(i => `${i.name} x${i.quantity}`).join(', ')}</div>
+            <div>Total: ₹${order.total} | Payment: ${order.paymentMethod}</div>
+            <div class="mt-2"><label>Status:</label> <select class="order-status" data-id="${order.id}"><option ${order.status === "Confirmed" ? "selected" : ""}>Confirmed</option><option ${order.status === "Shipped" ? "selected" : ""}>Shipped</option><option ${order.status === "Delivered" ? "selected" : ""}>Delivered</option></select></div>
+          </div>
+        `).join('')}
+      </div>
+      <a href="/admin/dashboard" class="btn btn-secondary mt-3">Back</a>
+    `;
+    document.querySelectorAll(".order-status").forEach(sel => {
+      sel.addEventListener("change", (e) => {
+        const orderId = sel.dataset.id;
+        const newStatus = sel.value;
+        const ord = orders.find(o => o.id === orderId);
+        if (ord) ord.status = newStatus;
+        localStorage.setItem("niva_orders", JSON.stringify(orders));
+      });
     });
-    html += `</tbody></table>`;
-    container.innerHTML = html;
   }
 
-  // ---- Admin auth (session) ----
-  let adminLoggedIn = false;
-  function showAdminLoginModal() { document.getElementById("adminLoginModal").classList.add("open"); }
-  function hideAdminLoginModal() { document.getElementById("adminLoginModal").classList.remove("open"); }
-  function logoutAdmin() { adminLoggedIn = false; document.getElementById("adminDashboard").classList.remove("visible"); showToast("Admin logged out"); }
-  function attemptLogin(username, password) {
-    if (username === admin" && password === "admin123") {
-      adminLoggedIn = true;
-      hideAdminLoginModal();
-      document.getElementById("adminDashboard").classList.add("visible");
-      renderAdminOrders();
-      showToast("Welcome Admin");
-    } else { showToast("Invalid credentials"); }
-  }
-
-  // ----- PAYMENT MODAL (Online order & payment system) -----
-  const paymentModal = document.getElementById("paymentModal");
-  function openPaymentModal() {
-    if (cart.length === 0) { showToast("Please add items to cart first"); return; }
-    const total = cart.reduce((s,i) => s + (getProductById(i.id).price * i.quantity), 0);
-    const summaryHtml = `<strong>Order Summary</strong><br>${cart.map(i => `${getProductById(i.id).name} x${i.quantity}`).join("<br>")}<hr><strong>Total: $${total.toFixed(2)}</strong><br><small>Payment support: 9706011300 (WhatsApp)</small>`;
-    document.getElementById("paymentOrderSummary").innerHTML = summaryHtml;
-    paymentModal.classList.add("open");
-  }
-  function closePaymentModal() { paymentModal.classList.remove("open"); }
-
-  // Confirm order & simulate payment
-  function confirmOrder() {
-    const name = document.getElementById("customerName").value.trim();
-    if (!name) { showToast("Please enter your full name"); return; }
-    const phone = document.getElementById("customerPhone").value;
-    const email = document.getElementById("customerEmail").value;
-    const newOrder = placeOrder(name, phone, email);
-    if (newOrder) {
-      closePaymentModal();
-      showToast(`🎉 Order placed! Total $${newOrder.total.toFixed(2)}. Payment successful (demo).`);
-      if(adminLoggedIn) renderAdminOrders();
-      closeCartDrawer();
-      document.getElementById("customerName").value = "";
-      document.getElementById("customerPhone").value = "";
-      document.getElementById("customerEmail").value = "";
-    } else { showToast("Cart empty"); closePaymentModal(); }
-  }
-
-  // ---- Cart Drawer ----
-  const cartOverlay = document.getElementById("cartOverlay");
-  function openCartDrawer() { cartOverlay.classList.add("open"); document.body.style.overflow = "hidden"; }
-  function closeCartDrawer() { cartOverlay.classList.remove("open"); document.body.style.overflow = ""; }
-  document.getElementById("cartIconBtn")?.addEventListener("click", openCartDrawer);
-  document.getElementById("closeCartBtn")?.addEventListener("click", closeCartDrawer);
-  cartOverlay.addEventListener("click", (e) => { if(e.target === cartOverlay) closeCartDrawer(); });
-  document.getElementById("clearCartBtn")?.addEventListener("click", () => { cart = []; saveCart(); updateCartUI(); showToast("Cart cleared"); closeCartDrawer(); });
-  // Override checkout button: open payment modal instead of direct alert
-  document.getElementById("checkoutBtn")?.addEventListener("click", () => { closeCartDrawer(); openPaymentModal(); });
-
-  // ---- Render Products ----
-  function renderProducts() {
-    const grid = document.getElementById("productsGrid");
-    if (!grid) return;
-    grid.innerHTML = "";
-    PRODUCTS.forEach(p => {
-      const card = document.createElement("div");
-      card.className = "product-card";
-      card.innerHTML = `<img class="product-img" src="${p.image}" alt="${p.alt}" loading="lazy">
-        <div class="product-info"><h3>${p.name}</h3><div class="product-price">$${p.price.toFixed(2)}</div>
-        <button class="add-to-cart" data-id="${p.id}"><i class="fas fa-shopping-cart"></i> Add to Cart</button></div>`;
-      grid.appendChild(card);
+  function attachAddToCartEvents() {
+    document.querySelectorAll(".add-to-cart-btn").forEach(btn => {
+      btn.addEventListener("click", (e) => {
+        const id = btn.dataset.id;
+        addToCart(id, 1);
+        alert("Added to cart!");
+        updateCartCount();
+      });
     });
-    document.querySelectorAll(".add-to-cart").forEach(btn => btn.addEventListener("click", (e) => { const id = parseInt(btn.dataset.id); addToCart(id); }));
   }
 
-  // helpers & toast
-  function showToast(msg) { const t = document.getElementById("toastMsg"); t.innerText = msg; t.style.opacity = "1"; setTimeout(() => t.style.opacity = "0", 1800); }
+  // routing on popstate
+  window.addEventListener("popstate", () => {
+    renderRoute(window.location.pathname);
+  });
 
-  // Event listeners admin
-  document.getElementById("adminLoginBtn")?.addEventListener("click", () => { if(adminLoggedIn) { logoutAdmin(); } else { showAdminLoginModal(); } });
-  document.getElementById("submitAdminLogin")?.addEventListener("click", () => { const u = document.getElementById("adminUser").value; const p = document.getElementById("adminPass").value; attemptLogin(u,p); });
-  document.getElementById("closeAdminModal")?.addEventListener("click", hideAdminLoginModal);
-  document.getElementById("adminLogoutBtn")?.addEventListener("click", logoutAdmin);
-  document.getElementById("confirmOrderBtn")?.addEventListener("click", confirmOrder);
-  document.getElementById("closePaymentModal")?.addEventListener("click", closePaymentModal);
-  window.addEventListener("click", (e) => { if(e.target === paymentModal) closePaymentModal(); if(e.target === document.getElementById("adminLoginModal")) hideAdminLoginModal(); });
-
-  // initial load
-  loadCart();
-  loadOrders();
-  renderProducts();
-  if (adminLoggedIn) { document.getElementById("adminDashboard").classList.add("visible"); renderAdminOrders(); }
-  // fallback images
-  document.querySelectorAll("img").forEach(img => img.addEventListener("error", function(){ if(!this.dataset.fallback){ this.dataset.fallback="true"; this.src="https://placehold.co/400x400/F2E8DD/8B6946?text=Lumière"; }}));
+  function init() {
+    updateCartCount();
+    renderRoute(window.location.pathname);
+  }
+  init();
 </script>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js"></script>
 </body>
 </html>
