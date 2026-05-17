@@ -1,62 +1,47 @@
-<!-- public/index.html - Customer Frontend Homepage -->
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Niva Jewels - Exquisite Handcrafted Jewelry</title>
-  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;500;600;700&family=Poppins:wght@300;400;500;600&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-  <link rel="stylesheet" href="/css/style.css">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Niva Jewels - Exquisite Jewelry</title>
+    <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <link rel="stylesheet" href="style.css">
 </head>
-<body>
-  <!-- Header with Logo -->
-  <header>
-    <div class="container">
-      <div class="logo">
-        <i class="fas fa-gem"></i>
-        <h1>Niva Jewels</h1>
-      </div>
-      <nav>
-        <a href="/" class="active">Home</a>
-        <a href="/cart.html"><i class="fas fa-shopping-cart"></i> Cart <span id="cartCount">0</span></a>
-      </nav>
-    </div>
-  </header>
+<body class="bg-gray-50">
+    <!-- Navigation -->
+    <nav class="bg-white shadow-md sticky top-0 z-50">
+        <div class="container mx-auto px-4 py-3 flex justify-between items-center">
+            <div class="flex items-center space-x-2">
+                <i class="fas fa-gem text-yellow-600 text-2xl"></i>
+                <span class="text-2xl font-bold text-gray-800">Niva <span class="text-yellow-600">Jewels</span></span>
+            </div>
+            <div class="hidden md:flex space-x-6">
+                <a href="#" onclick="showPage('home')" class="nav-link text-gray-700 hover:text-yellow-600">Home</a>
+                <a href="#" onclick="showPage('products')" class="nav-link text-gray-700 hover:text-yellow-600">Shop</a>
+                <a href="#" onclick="showPage('cart')" class="nav-link text-gray-700 hover:text-yellow-600 relative">
+                    Cart <span id="cartCount" class="bg-yellow-600 text-white text-xs rounded-full px-1.5 py-0.5 ml-1">0</span>
+                </a>
+                <a href="#" id="authLink" onclick="showPage('login')" class="nav-link text-gray-700 hover:text-yellow-600">Login</a>
+                <a href="#" id="adminLink" style="display:none;" onclick="showPage('admin')" class="nav-link text-red-600 hover:text-red-800">Admin</a>
+                <a href="#" id="logoutBtn" style="display:none;" onclick="logout()" class="nav-link text-gray-700 hover:text-yellow-600">Logout</a>
+            </div>
+            <div class="md:hidden">
+                <button id="mobileMenuBtn" class="text-gray-700"><i class="fas fa-bars text-xl"></i></button>
+            </div>
+        </div>
+    </nav>
 
-  <!-- Hero Section -->
-  <section class="hero">
-    <div class="hero-content">
-      <h2>Elegance Redefined</h2>
-      <p>Discover our exquisite collection of handcrafted jewelry, designed to celebrate your unique beauty</p>
-      <a href="#products" class="btn-primary">Shop Now</a>
-    </div>
-  </section>
+    <!-- Main Content -->
+    <main id="app" class="container mx-auto px-4 py-8 min-h-screen">
+        <!-- Dynamic content will be loaded here -->
+    </main>
 
-  <!-- Products Section -->
-  <section id="products" class="products-section">
-    <div class="container">
-      <h2 class="section-title">Our Collection</h2>
-      <div class="products-grid" id="productsGrid">
-        <!-- Products loaded dynamically -->
-        <div class="loading">Loading exquisite pieces...</div>
-      </div>
-    </div>
-  </section>
+    <!-- WhatsApp Floating Button -->
+    <a href="https://wa.me/919706011300" target="_blank" class="fixed bottom-6 right-6 bg-green-500 text-white p-4 rounded-full shadow-lg hover:bg-green-600 transition z-50">
+        <i class="fab fa-whatsapp text-2xl"></i>
+    </a>
 
-  <!-- WhatsApp Floating Button -->
-  <a href="https://wa.me/919706011300?text=Hello%20Niva%20Jewels%2C%20I'm%20interested%20in%20your%20jewelry%20collection" 
-     class="whatsapp-float" target="_blank">
-    <i class="fab fa-whatsapp"></i>
-    <span>Chat with us</span>
-  </a>
-
-  <footer>
-    <div class="container">
-      <p>&copy; 2025 Niva Jewels. Crafted with love. All rights reserved.</p>
-    </div>
-  </footer>
-
-  <script src="/js/main.js"></script>
+    <script src="script.js"></script>
 </body>
 </html>
