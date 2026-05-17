@@ -575,7 +575,7 @@
   function hideAdminLoginModal() { document.getElementById("adminLoginModal").classList.remove("open"); }
   function logoutAdmin() { adminLoggedIn = false; document.getElementById("adminDashboard").classList.remove("visible"); showToast("Admin logged out"); }
   function attemptLogin(username, password) {
-    if (username === "admin" && password === "admin123") {
+    if (username === mustafur" && password === "must123") {
       adminLoggedIn = true;
       hideAdminLoginModal();
       document.getElementById("adminDashboard").classList.add("visible");
